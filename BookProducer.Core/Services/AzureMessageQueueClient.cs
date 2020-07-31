@@ -51,13 +51,14 @@ namespace BookProducer.Core.Services
                 var message = new Message(Encoding.UTF8.GetBytes(messageBody));
 
                 await queueClient.SendAsync(message);
+                await queueClient.CloseAsync();
+            return await Task.FromResult(true);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            await queueClient.CloseAsync();
-            return await Task.FromResult(true);
+          
         }
     }
 }

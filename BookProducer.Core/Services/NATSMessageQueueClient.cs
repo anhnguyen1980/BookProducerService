@@ -33,10 +33,10 @@ namespace BookProducer.Core.Services
                 _client.Publish(_queueName, data);
                 return Task.FromResult(true);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return Task.FromResult(false);
+                throw ex;
+                //return Task.FromResult(false);
             }
 
         }

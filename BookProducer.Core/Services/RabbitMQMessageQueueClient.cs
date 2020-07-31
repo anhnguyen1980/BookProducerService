@@ -38,7 +38,7 @@ namespace BookProducer.Core.Services
                                        routingKey: _queueName,
                                        basicProperties: null,
                                        body: body);
-
+                return Task.FromResult(true);
             }
             catch (Exception ex)
             {
@@ -46,7 +46,6 @@ namespace BookProducer.Core.Services
                 throw ex;
             }
 
-            return Task.FromResult(true);
         }
     }
 }

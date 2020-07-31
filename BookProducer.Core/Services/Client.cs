@@ -9,16 +9,25 @@ namespace BookProducer.Core.Services
 {
     public class Client : IClient
     {
-        private readonly IConfiguration  _configuration;
+        private readonly IConfiguration _configuration;
         public Client(IConfiguration configuration)
         {
             _configuration = configuration;
         }
         public async Task SendMessageAsync<T>(T messageInfo)
         {
-            IFactoryClient factory = new FactoryClient(_configuration);
-            IMessageQueueClient message = factory.CreateMessageQueue(_configuration["MessageQueue:Type"]);
-            await message.SendMessageAsync(messageInfo);
+            try
+            {
+                IFactoryClient factory = new FactoryClient(_configuration);
+                IMessageQueueClient message = factory.CreateMessageQueue(_configuration["MessageQueue:Type"]);
+                await message.SendMessageAsync(messageInfo);
+                            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
     }
 }
