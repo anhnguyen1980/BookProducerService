@@ -39,6 +39,7 @@ namespace BookProducerService
             Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(host.Services.GetRequiredService<IConfiguration>())
             .Enrich.WithProperty("ApplicationName", "ProcuderService")
+            .WriteTo.Console();
             .CreateLogger();
 
             // CreateHostBuilder(args).Build().Run();

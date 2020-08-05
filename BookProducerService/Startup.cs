@@ -71,7 +71,7 @@ namespace BookProducerService
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Book API V1"); });
 
-            app.UseHttpsRedirection();
+          //  app.UseHttpsRedirection();//rem because run docker
 
             app.UseRouting();
 
